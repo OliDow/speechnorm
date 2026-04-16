@@ -180,10 +180,7 @@ func englishOrdinal(n int64) string {
 
 	// Strip a leading "one " only when the cardinal starts exactly with "one "
 	// (meaning the number begins with the scale multiplier 1).
-	body := cardinal
-	if strings.HasPrefix(body, "one ") {
-		body = body[4:] // strip "one "
-	}
+	body := strings.TrimPrefix(cardinal, "one ")
 
 	// Make the last word ordinal. The last word may be hyphenated (e.g.
 	// "twenty-one") — ordinalise only the part after the final hyphen.

@@ -1,0 +1,20 @@
+version: "2"
+linters:
+  enable:
+    - errcheck
+    - errorlint
+    - govet
+    - ineffassign
+    - misspell
+    - revive
+    - staticcheck
+    - unused
+  settings:
+    misspell:
+      # quarante is French for "forty"; not a misspelling of "quarantine".
+      ignore-rules:
+        - quarante
+formatters:
+  enable:
+    - gofumpt
+    - goimports

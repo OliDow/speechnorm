@@ -4,7 +4,7 @@ import "testing"
 
 func TestCurrencyNames(t *testing.T) {
 	cases := []struct {
-		symbol                                  string
+		symbol                                   string
 		majorSing, majorPlu, minorSing, minorPlu string
 	}{
 		{"$", "dollar", "dollars", "cent", "cents"},

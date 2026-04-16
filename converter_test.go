@@ -6,8 +6,8 @@ import (
 
 type fakeConv struct{ name string }
 
-func (f fakeConv) ToWords(n int64) string        { return f.name }
-func (f fakeConv) ToOrdinalWords(n int64) string { return f.name + "-ord" }
+func (f fakeConv) ToWords(_ int64) string        { return f.name }
+func (f fakeConv) ToOrdinalWords(_ int64) string { return f.name + "-ord" }
 
 func TestRegisterAndLookup(t *testing.T) {
 	isolatedRegistry(t)

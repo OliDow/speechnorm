@@ -1,9 +1,3 @@
-// Package speechnorm converts digits in text into locale-appropriate words
-// suitable for TTS input.
-//
-// The package is self-contained and intentionally has no dependencies
-// outside the Go standard library. It may be extracted to its own repo
-// in future.
 package speechnorm
 
 import "sync"
