@@ -16,6 +16,8 @@ Zero non-stdlib dependencies.
 
 ## Install
 
+Requires Go 1.24+.
+
 ```sh
 go get github.com/olidow/speechnorm
 ```
