@@ -35,3 +35,8 @@ func ExampleNormaliseNumbers_portuguese() {
 	fmt.Println(speechnorm.NormaliseNumbers("Tenho 3 gatos", "pt"))
 	// Output: Tenho três gatos
 }
+
+func ExampleNormaliseNumbers_arabic() {
+	fmt.Println(speechnorm.NormaliseNumbers("لدي 3 قطط", "ar"))
+	// Output: لدي ثلاثة قطط
+}

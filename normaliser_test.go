@@ -106,7 +106,7 @@ func TestNormaliseNumbers_MultiLocaleSmall(t *testing.T) {
 		{"5", "es", "cinco"},
 		{"5", "pt", "cinco"},
 		{"5", "it", "cinque"},
-		// NOTE: "5" "ar" case intentionally omitted — Arabic is a separate spec.
+		{"5", "ar", "خمسة"},
 	}
 	runNormaliseCases(t, cases)
 }
@@ -116,6 +116,7 @@ func TestNormaliseNumbers_MultiLocaleLarge(t *testing.T) {
 		{"1000", "fr", "mille"},
 		{"1000", "de", "eintausend"},
 		{"1000", "es", "mil"},
+		{"1000", "ar", "ألف"},
 	}
 	runNormaliseCases(t, cases)
 }
