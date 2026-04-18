@@ -35,6 +35,7 @@ speechnorm.NormaliseNumbers("I paid $5 for 3 items", "en")
 
 | Locale | Example input | Example output |
 |---|---|---|
+| `ar` | `لدي 3 قطط` | `لدي ثلاثة قطط` |
 | `en` | `I have 3 cats` | `I have three cats` |
 | `de` | `Ich habe 3 Katzen` | `Ich habe drei Katzen` |
 | `es` | `Tengo 3 gatos` | `Tengo tres gatos` |
