@@ -34,7 +34,7 @@ func NormaliseNumbers(text, locale string) string {
 
 var (
 	// \p{Sc} = Unicode currency symbols
-	currencyRegex    = regexp.MustCompile(`(\p{Sc})\s?(\d{1,3}(?:,\d{3})*)(?:\.(\d{1,2}))?`)
+	currencyRegex    = regexp.MustCompile(`(\p{Sc})\s?(\d{1,3}(?:,\d{3})+|\d{1,19})(?:\.(\d{1,2}))?`)
 	ordinalRegex     = regexp.MustCompile(`\b(\d{1,19})(st|nd|rd|th)\b`)
 	commaNumberRegex = regexp.MustCompile(`\b\d{1,3}(?:,\d{3})+\b`)
 	plainIntRegex    = regexp.MustCompile(`\b\d{1,19}\b`)

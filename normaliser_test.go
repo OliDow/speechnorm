@@ -53,6 +53,14 @@ func TestNormaliseNumbers_Currency(t *testing.T) {
 	runNormaliseCases(t, cases)
 }
 
+func TestNormaliseNumbers_DollarsUngroupedDigits_KeepsAllDigits(t *testing.T) {
+	cases := []struct{ in, locale, want string }{
+		{"$1234", "en", "one thousand two hundred and thirty-four dollars"},
+		{"$1234567", "en", "one million two hundred and thirty-four thousand five hundred and sixty-seven dollars"},
+	}
+	runNormaliseCases(t, cases)
+}
+
 func TestNormaliseNumbers_DecimalsUnchanged(t *testing.T) {
 	cases := []struct{ in, locale, want string }{
 		{"pi is 3.14", "en", "pi is 3.14"},

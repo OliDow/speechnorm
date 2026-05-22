@@ -36,6 +36,10 @@ func TestPortugueseToWords_ScaleBoundaries(t *testing.T) {
 		{2_000_000_000, "dois mil milhões"},
 		{10_000_000_000, "dez mil milhões"},
 		{100_000_000_000, "cem mil milhões"},
+		{1_000_000_000_000, "um bilião"},
+		{2_000_000_000_000, "dois biliões"},
+		{1_000_000_000_000_000, "mil biliões"},
+		{1_000_000_000_000_000_000, "um trilião"},
 	}
 	for _, c := range cases {
 		c := c

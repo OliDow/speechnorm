@@ -34,6 +34,9 @@ func TestSpanishToWords_ScaleBoundaries(t *testing.T) {
 		{10_000_000_000, "diez mil millones"},
 		{100_000_000_000, "cien mil millones"},
 		{1_000_000_000_000, "un billón"},
+		{1_000_000_000_000_000, "mil billones"},
+		{1_000_000_000_000_000_000, "un trillón"},
+		{2_000_000_000_000_000_000, "dos trillones"},
 	}
 	for _, c := range cases {
 		c := c

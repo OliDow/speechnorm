@@ -56,3 +56,22 @@ func TestItalianToWords(t *testing.T) {
 		})
 	}
 }
+
+func TestItalianToWords_Quadrillion_UsesBiliardo(t *testing.T) {
+	t.Skip("tracked in #10")
+	// Arrange
+	conv, ok := lookup("it")
+	if !ok {
+		t.Fatal("italian converter not registered")
+	}
+	n := int64(1_000_000_000_000_000)
+	want := "un biliardo"
+
+	// Act
+	got := conv.ToWords(n)
+
+	// Assert
+	if got != want {
+		t.Errorf("it ToWords(%d) = %q, want %q", n, got, want)
+	}
+}

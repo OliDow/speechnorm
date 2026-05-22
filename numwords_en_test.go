@@ -96,6 +96,21 @@ func TestEnglishToWords(t *testing.T) {
 	}
 }
 
+func TestEnglishToWords_BillionPlusSubHundred_HasAnd(t *testing.T) {
+	// Arrange
+	conv := englishConverter{}
+	n := int64(1_000_000_050)
+	want := "one billion and fifty"
+
+	// Act
+	got := conv.ToWords(n)
+
+	// Assert
+	if got != want {
+		t.Errorf("ToWords(%d) = %q, want %q", n, got, want)
+	}
+}
+
 // TestEnglishToOrdinalWords is a verbatim port of every English ordinal row
 // from Humanizer's NumberToWordsTests.cs (ToOrdinalWords method) and the
 // ToOrdinalWords_CanSpecifyCultureExplicitly en-US row.
