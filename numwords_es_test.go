@@ -56,3 +56,21 @@ func TestSpanishToWords(t *testing.T) {
 		})
 	}
 }
+
+func TestSpanishToWords_Quintillion_UsesTrillon(t *testing.T) {
+	// Arrange
+	conv, ok := lookup("es")
+	if !ok {
+		t.Fatal("spanish converter not registered")
+	}
+	n := int64(1_000_000_000_000_000_000)
+	want := "un trillón"
+
+	// Act
+	got := conv.ToWords(n)
+
+	// Assert
+	if got != want {
+		t.Errorf("es ToWords(%d) = %q, want %q", n, got, want)
+	}
+}

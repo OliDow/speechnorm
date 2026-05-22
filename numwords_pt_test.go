@@ -58,3 +58,21 @@ func TestPortugueseToWords(t *testing.T) {
 		})
 	}
 }
+
+func TestPortugueseToWords_Trillion_UsesBiliao(t *testing.T) {
+	// Arrange
+	conv, ok := lookup("pt")
+	if !ok {
+		t.Fatal("portuguese converter not registered")
+	}
+	n := int64(1_000_000_000_000)
+	want := "um bilião"
+
+	// Act
+	got := conv.ToWords(n)
+
+	// Assert
+	if got != want {
+		t.Errorf("pt ToWords(%d) = %q, want %q", n, got, want)
+	}
+}

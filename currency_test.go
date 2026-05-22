@@ -1,6 +1,9 @@
 package speechnorm
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
 func TestCurrencyNames(t *testing.T) {
 	cases := []struct {
@@ -59,5 +62,22 @@ func TestConvertCurrency(t *testing.T) {
 					c.symbol, c.integerPart, c.decimalPart, got, c.want)
 			}
 		})
+	}
+}
+
+func TestConvertCurrency_FrenchLocale_NoEnglishJoiner(t *testing.T) {
+	t.Skip("tracked in #12")
+	// Arrange
+	conv, ok := lookup("fr")
+	if !ok {
+		t.Fatal("french converter not registered")
+	}
+
+	// Act
+	got := convertCurrency("€", "100", "50", conv)
+
+	// Assert
+	if strings.Contains(got, " and ") {
+		t.Errorf("French currency uses English joiner: %q", got)
 	}
 }

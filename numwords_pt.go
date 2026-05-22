@@ -27,6 +27,15 @@ var (
 		"", "cento", "duzentos", "trezentos", "quatrocentos",
 		"quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos",
 	}
+	// ptHigherScales lists long-scale nouns above milhão. Each entry is
+	// a masculine noun pluralised in -ões. Processed descending.
+	ptHigherScales = []struct {
+		pow              int64
+		singular, plural string
+	}{
+		{1_000_000_000_000_000_000, "trilião", "triliões"},
+		{1_000_000_000_000, "bilião", "biliões"},
+	}
 )
 
 func (portugueseConverter) ToWords(n int64) string {
@@ -46,6 +55,25 @@ func (portugueseConverter) ToOrdinalWords(n int64) string {
 // portugueseWords returns the Portuguese cardinal words for n > 0.
 func portugueseWords(n int64) string {
 	var parts []string
+
+	for _, s := range ptHigherScales {
+		if n >= s.pow {
+			count := n / s.pow
+			n %= s.pow
+			var chunk string
+			if count == 1 {
+				chunk = "um " + s.singular
+			} else {
+				chunk = portugueseWords(count) + " " + s.plural
+			}
+			if n > 0 && ptNeedsE(n) {
+				parts = append(parts, chunk+" e "+portugueseWords(n))
+				n = 0
+			} else {
+				parts = append(parts, chunk)
+			}
+		}
+	}
 
 	if n >= 1_000_000 {
 		millions := n / 1_000_000

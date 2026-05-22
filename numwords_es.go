@@ -49,6 +49,19 @@ func (spanishConverter) ToOrdinalWords(n int64) string {
 func spanishWords(n int64) string {
 	var parts []string
 
+	// Quintillions (long scale: 1_000_000_000_000_000_000 = "un trillón").
+	if n >= 1_000_000_000_000_000_000 {
+		trillones := n / 1_000_000_000_000_000_000
+		n %= 1_000_000_000_000_000_000
+		var chunk string
+		if trillones == 1 {
+			chunk = "un trillón"
+		} else {
+			chunk = spanishWords(trillones) + " trillones"
+		}
+		parts = append(parts, chunk)
+	}
+
 	// Trillions (long scale: 1_000_000_000_000 = "un billón").
 	if n >= 1_000_000_000_000 {
 		billones := n / 1_000_000_000_000
