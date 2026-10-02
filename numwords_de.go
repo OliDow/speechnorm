@@ -35,6 +35,26 @@ func (germanConverter) ToOrdinalWords(n int64) string {
 	return germanConverter{}.ToWords(n)
 }
 
+func (germanConverter) CurrencyJoiner() string {
+	return " and "
+}
+
+func (germanConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dollar", "dollars", "cent", "cents"
+	case "€":
+		return "euro", "euros", "cent", "cents"
+	case "£":
+		return "pound", "pounds", "penny", "pence"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "rupee", "rupees", "paisa", "paise"
+	}
+	return "", "", "", ""
+}
+
 // germanWords returns the German cardinal words for n > 0.
 func germanWords(n int64) string {
 	var parts []string

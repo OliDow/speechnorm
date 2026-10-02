@@ -31,7 +31,7 @@ func currencyNames(symbol string) (string, string, string, string) {
 func convertCurrency(symbol, integerPart, decimalPart string, conv Converter) string {
 	major, _ := strconv.ParseInt(strings.ReplaceAll(integerPart, ",", ""), 10, 64)
 
-	majorSing, majorPlu, minorSing, minorPlu := currencyNames(symbol)
+	majorSing, majorPlu, minorSing, minorPlu := conv.CurrencyNames(symbol)
 
 	if majorSing == "" {
 		return conv.ToWords(major)
@@ -61,5 +61,5 @@ func convertCurrency(symbol, integerPart, decimalPart string, conv Converter) st
 	if minor == 1 {
 		minorUnit = minorSing
 	}
-	return result + " and " + conv.ToWords(minor) + " " + minorUnit
+	return result + conv.CurrencyJoiner() + conv.ToWords(minor) + " " + minorUnit
 }
