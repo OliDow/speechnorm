@@ -33,6 +33,26 @@ func (italianConverter) ToOrdinalWords(n int64) string {
 	return italianConverter{}.ToWords(n)
 }
 
+func (italianConverter) CurrencyJoiner() string {
+	return " and "
+}
+
+func (italianConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dollar", "dollars", "cent", "cents"
+	case "€":
+		return "euro", "euros", "cent", "cents"
+	case "£":
+		return "pound", "pounds", "penny", "pence"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "rupee", "rupees", "paisa", "paise"
+	}
+	return "", "", "", ""
+}
+
 // italianWords returns Italian cardinal words for n > 0.
 func italianWords(n int64) string {
 	if n >= 1_000_000_000 {

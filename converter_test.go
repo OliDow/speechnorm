@@ -8,6 +8,10 @@ type fakeConv struct{ name string }
 
 func (f fakeConv) ToWords(_ int64) string        { return f.name }
 func (f fakeConv) ToOrdinalWords(_ int64) string { return f.name + "-ord" }
+func (f fakeConv) CurrencyJoiner() string        { return " and " }
+func (f fakeConv) CurrencyNames(string) (string, string, string, string) {
+	return "", "", "", ""
+}
 
 func TestRegisterAndLookup(t *testing.T) {
 	isolatedRegistry(t)

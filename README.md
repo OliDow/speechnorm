@@ -47,9 +47,10 @@ Unknown or empty locales return the input unchanged.
 
 ## Currency note
 
-Currency words (`dollars`, `and fifty cents`) are always English regardless
-of the locale. Only the *number words* respect the locale's converter.
-Supported symbols: `$ € £ ¥ ₹`.
+Currency joiners and unit nouns are locale-aware. For example, English uses
+"and" (`seventeen dollars and fifty cents`) while French uses "et"
+(`dix-sept euros et cinquante cents`). The *number words* respect the
+locale's converter. Supported symbols: `$ € £ ¥ ₹`.
 
 ## Contributing
 

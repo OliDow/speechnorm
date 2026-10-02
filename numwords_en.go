@@ -149,6 +149,26 @@ func (englishConverter) ToOrdinalWords(n int64) string {
 	return englishOrdinal(n)
 }
 
+func (englishConverter) CurrencyJoiner() string {
+	return " and "
+}
+
+func (englishConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dollar", "dollars", "cent", "cents"
+	case "€":
+		return "euro", "euros", "cent", "cents"
+	case "£":
+		return "pound", "pounds", "penny", "pence"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "rupee", "rupees", "paisa", "paise"
+	}
+	return "", "", "", ""
+}
+
 // englishOrdinal converts n to its English ordinal form.
 //
 // Humanizer rule: when the full cardinal form starts with "one " (i.e. the

@@ -2,9 +2,8 @@
 // locale-appropriate spoken words for TTS input. Supported locales:
 // ar, de, en, es, fr, it, pt. The single entry point is NormaliseNumbers.
 //
-// Currency words ("dollars", "and fifty cents") are always English
-// regardless of locale; only the number words follow the locale's
-// converter.
+// Currency joiners ("and", "et") and unit nouns ("dollars", "euros", etc.)
+// are locale-aware and supplied by each Converter implementation.
 //
 // The package has zero non-stdlib dependencies.
 package speechnorm
