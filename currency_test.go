@@ -66,7 +66,6 @@ func TestConvertCurrency(t *testing.T) {
 }
 
 func TestConvertCurrency_FrenchLocale_NoEnglishJoiner(t *testing.T) {
-	t.Skip("tracked in #12")
 	// Arrange
 	conv, ok := lookup("fr")
 	if !ok {
@@ -79,5 +78,8 @@ func TestConvertCurrency_FrenchLocale_NoEnglishJoiner(t *testing.T) {
 	// Assert
 	if strings.Contains(got, " and ") {
 		t.Errorf("French currency uses English joiner: %q", got)
+	}
+	if !strings.Contains(got, " et ") {
+		t.Errorf("French currency should use ' et ' joiner: %q", got)
 	}
 }

@@ -45,11 +45,10 @@ speechnorm.NormaliseNumbers("I paid $5 for 3 items", "en")
 
 Unknown or empty locales return the input unchanged.
 
-## Currency note
+## Supported currency symbols
 
-Currency words (`dollars`, `and fifty cents`) are always English regardless
-of the locale. Only the *number words* respect the locale's converter.
-Supported symbols: `$ € £ ¥ ₹`.
+`$ € £ ¥ ₹`. Currency amounts are spoken in the target locale: number words,
+joiners, and unit names all follow the locale's converter.
 
 ## Contributing
 

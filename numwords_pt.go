@@ -52,6 +52,26 @@ func (portugueseConverter) ToOrdinalWords(n int64) string {
 	return portugueseConverter{}.ToWords(n)
 }
 
+func (portugueseConverter) CurrencyJoiner() string {
+	return " e "
+}
+
+func (portugueseConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dólar", "dólares", "centavo", "centavos"
+	case "€":
+		return "euro", "euros", "centavo", "centavos"
+	case "£":
+		return "libra", "libras", "penique", "peniques"
+	case "¥":
+		return "iene", "ienes", "", ""
+	case "₹":
+		return "rupia", "rupias", "paisa", "paisas"
+	}
+	return "", "", "", ""
+}
+
 // portugueseWords returns the Portuguese cardinal words for n > 0.
 func portugueseWords(n int64) string {
 	var parts []string
