@@ -10,6 +10,13 @@ type Converter interface {
 	// ToOrdinalWords returns the ordinal word form of n. Locales without
 	// an ordinal regex trigger may return the cardinal form.
 	ToOrdinalWords(n int64) string
+	// CurrencyJoiner returns the locale-specific joiner between major and
+	// minor currency parts (e.g., " and " for English, " et " for French).
+	CurrencyJoiner() string
+	// CurrencyNames returns locale-specific names for a currency symbol.
+	// Returns (majorSingular, majorPlural, minorSingular, minorPlural).
+	// All four return empty for unknown symbols.
+	CurrencyNames(symbol string) (string, string, string, string)
 }
 
 var (

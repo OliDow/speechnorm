@@ -35,6 +35,26 @@ func (frenchConverter) ToOrdinalWords(n int64) string {
 	return frenchConverter{}.ToWords(n)
 }
 
+func (frenchConverter) CurrencyJoiner() string {
+	return " et "
+}
+
+func (frenchConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dollar", "dollars", "cent", "cents"
+	case "€":
+		return "euro", "euros", "centime", "centimes"
+	case "£":
+		return "livre", "livres", "penny", "pence"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "roupie", "roupies", "paisa", "paise"
+	}
+	return "", "", "", ""
+}
+
 // frenchWords returns the French cardinal words for n > 0.
 func frenchWords(n int64) string {
 	var parts []string

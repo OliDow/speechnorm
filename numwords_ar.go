@@ -74,6 +74,26 @@ func (arabicConverter) ToOrdinalWords(n int64) string {
 	return arabicConverter{}.ToWords(n)
 }
 
+func (arabicConverter) CurrencyJoiner() string {
+	return " و "
+}
+
+func (arabicConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "دولار", "دولارات", "سنت", "سنتات"
+	case "€":
+		return "يورو", "يورو", "سنت", "سنتات"
+	case "£":
+		return "جنيه", "جنيهات", "بنس", "بنسات"
+	case "¥":
+		return "ين", "ين", "", ""
+	case "₹":
+		return "روبية", "روبيات", "بيسة", "بيسات"
+	}
+	return "", "", "", ""
+}
+
 // arabicWords converts n > 0 to Arabic cardinal words.
 func arabicWords(n int64) string {
 	// Decompose into triads (groups of 3 digits), least significant first.
