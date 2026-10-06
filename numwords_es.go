@@ -45,6 +45,26 @@ func (spanishConverter) ToOrdinalWords(n int64) string {
 	return spanishConverter{}.ToWords(n)
 }
 
+func (spanishConverter) CurrencyJoiner() string {
+	return " y "
+}
+
+func (spanishConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dólar", "dólares", "centavo", "centavos"
+	case "€":
+		return "euro", "euros", "centavo", "centavos"
+	case "£":
+		return "libra", "libras", "penique", "peniques"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "rupia", "rupias", "paisa", "paisas"
+	}
+	return "", "", "", ""
+}
+
 // spanishWords returns the Spanish cardinal words for n > 0.
 func spanishWords(n int64) string {
 	var parts []string
