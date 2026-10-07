@@ -159,3 +159,23 @@ func germanUnitStem(n int64) string {
 	}
 	return deUnits[n]
 }
+
+func (germanConverter) CurrencyJoiner() string {
+	return " und "
+}
+
+func (germanConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "Dollar", "Dollar", "Cent", "Cent"
+	case "€":
+		return "Euro", "Euro", "Cent", "Cent"
+	case "£":
+		return "Pfund", "Pfund", "Penny", "Pence"
+	case "¥":
+		return "Yen", "Yen", "", ""
+	case "₹":
+		return "Rupie", "Rupien", "Paisa", "Paisas"
+	}
+	return "", "", "", ""
+}

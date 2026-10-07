@@ -66,7 +66,6 @@ func TestConvertCurrency(t *testing.T) {
 }
 
 func TestConvertCurrency_FrenchLocale_NoEnglishJoiner(t *testing.T) {
-	t.Skip("tracked in #12")
 	// Arrange
 	conv, ok := lookup("fr")
 	if !ok {
