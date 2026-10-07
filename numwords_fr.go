@@ -155,3 +155,23 @@ func frenchUnderHundred(n int64) string {
 		return "quatre-vingt-" + frUnits[inner]
 	}
 }
+
+func (frenchConverter) CurrencyJoiner() string {
+	return " et "
+}
+
+func (frenchConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dollar", "dollars", "cent", "cents"
+	case "€":
+		return "euro", "euros", "centime", "centimes"
+	case "£":
+		return "livre", "livres", "penny", "pence"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "roupie", "roupies", "paisa", "paisas"
+	}
+	return "", "", "", ""
+}

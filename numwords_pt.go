@@ -183,3 +183,23 @@ func portugueseUnder100(n int64) string {
 	}
 	return ptTens[tens] + " e " + ptUnits[unit]
 }
+
+func (portugueseConverter) CurrencyJoiner() string {
+	return " e "
+}
+
+func (portugueseConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dólar", "dólares", "centavo", "centavos"
+	case "€":
+		return "euro", "euros", "centavo", "centavos"
+	case "£":
+		return "libra", "libras", "penny", "pence"
+	case "¥":
+		return "iene", "ienes", "", ""
+	case "₹":
+		return "rupia", "rupias", "paisa", "paisas"
+	}
+	return "", "", "", ""
+}

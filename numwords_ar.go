@@ -192,3 +192,23 @@ func arabicUnder100(n int64) string {
 	// Arabic: units before tens, joined with و (like German's units-before-tens).
 	return arOnes[unit] + " و " + arTens[tensDigit]
 }
+
+func (arabicConverter) CurrencyJoiner() string {
+	return " و "
+}
+
+func (arabicConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "دولار", "دولارات", "سنت", "سنتات"
+	case "€":
+		return "يورو", "يورو", "سنت", "سنتات"
+	case "£":
+		return "جنيه", "جنيهات", "بنس", "بنسات"
+	case "¥":
+		return "ين", "ين", "", ""
+	case "₹":
+		return "روبية", "روبيات", "باسة", "باسات"
+	}
+	return "", "", "", ""
+}

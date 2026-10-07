@@ -149,3 +149,23 @@ func itHundreds(n int64) string {
 	}
 	return prefix + itTensUnits(rem)
 }
+
+func (italianConverter) CurrencyJoiner() string {
+	return " e "
+}
+
+func (italianConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dollaro", "dollari", "centesimo", "centesimi"
+	case "€":
+		return "euro", "euro", "centesimo", "centesimi"
+	case "£":
+		return "sterlina", "sterline", "penny", "pence"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "rupia", "rupie", "paisa", "paisas"
+	}
+	return "", "", "", ""
+}

@@ -221,3 +221,23 @@ func ordinaliseLastWord(phrase string) string {
 	// Fallback: append "th" (covers edge cases not in the map).
 	return prefix + wordPrefix + stem + "th"
 }
+
+func (englishConverter) CurrencyJoiner() string {
+	return " and "
+}
+
+func (englishConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dollar", "dollars", "cent", "cents"
+	case "€":
+		return "euro", "euros", "cent", "cents"
+	case "£":
+		return "pound", "pounds", "penny", "pence"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "rupee", "rupees", "paisa", "paise"
+	}
+	return "", "", "", ""
+}

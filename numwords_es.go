@@ -146,3 +146,23 @@ func spanishUnderHundred(n int64) string {
 	}
 	return esTens[tens] + " y " + esUnits[unit]
 }
+
+func (spanishConverter) CurrencyJoiner() string {
+	return " y "
+}
+
+func (spanishConverter) CurrencyNames(symbol string) (string, string, string, string) {
+	switch symbol {
+	case "$":
+		return "dólar", "dólares", "centavo", "centavos"
+	case "€":
+		return "euro", "euros", "centavo", "centavos"
+	case "£":
+		return "libra", "libras", "penique", "peniques"
+	case "¥":
+		return "yen", "yen", "", ""
+	case "₹":
+		return "rupia", "rupias", "paisa", "paisas"
+	}
+	return "", "", "", ""
+}
