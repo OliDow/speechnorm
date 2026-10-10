@@ -35,6 +35,21 @@ func (italianConverter) ToOrdinalWords(n int64) string {
 
 // italianWords returns Italian cardinal words for n > 0.
 func italianWords(n int64) string {
+	if n >= 1_000_000_000_000_000 {
+		biliardi := n / 1_000_000_000_000_000
+		rem := n % 1_000_000_000_000_000
+		var chunk string
+		if biliardi == 1 {
+			chunk = "un biliardo"
+		} else {
+			chunk = italianWords(biliardi) + " biliardi"
+		}
+		if rem == 0 {
+			return chunk
+		}
+		return chunk + " " + italianWords(rem)
+	}
+
 	if n >= 1_000_000_000 {
 		miliardi := n / 1_000_000_000
 		rem := n % 1_000_000_000
