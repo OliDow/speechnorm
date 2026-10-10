@@ -58,7 +58,6 @@ func TestItalianToWords(t *testing.T) {
 }
 
 func TestItalianToWords_Quadrillion_UsesBiliardo(t *testing.T) {
-	t.Skip("tracked in #10")
 	// Arrange
 	conv, ok := lookup("it")
 	if !ok {
